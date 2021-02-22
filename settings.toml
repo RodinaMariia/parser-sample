@@ -1,0 +1,2 @@
+input_directory = "data/urls/"
+output_directory = "data/dataframes/"
