@@ -597,8 +597,6 @@ class BasicParser:
         then turn them into BeautifulSoup parsers with specific names. Next step it mines information
         from founded HTML-blocks and records to general repository.
         """
-        # print(self._id)
-        # print(self._storage.is_new)
         if self._storage.is_new:
             all_info_parsed = list(map(lambda x: bs4.BeautifulSoup(x.get_attribute('innerHTML'), 'lxml'),
                                        self.driver.find_elements_by_xpath("//div[@class='row blockInfo']/div")))
