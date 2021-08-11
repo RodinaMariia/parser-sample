@@ -262,64 +262,6 @@ def load_urls(urls_directory: str):
     return urls.reset_index()
 
 
-# def parse_sites(parser_name, settings, storage_type: str = 'df'):
-#     """
-#     Function takes previously prepared list of urls and parses data from them.
-#
-#     :param parser_name: data parser. The parser should fits to the input urls.
-#     :type parser_name: ps.BasicParser.init
-#
-#     :param settings: dictionary with settings including directory information
-#     :type settings: dict like
-#
-#     :param storage_type: string with information of a storage method.
-#     :type storage_type: str
-#
-#     """
-#     start_time = time.time()
-#
-#     df_dict = {}
-#     drivers = [create_silent_driver(), create_silent_driver(), create_silent_driver()]
-#     urls = load_urls(settings.input_directory)
-#     all_i = urls.shape[0]
-#
-#     #sqlite3.enable_shared_cache(1)
-#
-#     storage = parser.StorageAdapterDataframe() if storage_type == 'df' \
-#         else parser.StorageAdapterSQLite(db_connection := sqlite3.connect(os.path.join(settings.db_directory,
-#                                                                                        'parsing.db')),
-#                                          cursor=db_connection.cursor())
-#
-#     for idx, url in urls.iterrows():
-#         try:
-#             drivers[0].get(url['url'])
-#             print('{} in {}'.format(idx, all_i))
-#             bp = parser_name(drivers[0],
-#                              storage=storage,
-#                              fast=True,
-#                              child_drivers=drivers[1:])
-#             bp.parse_page()
-#             if storage_type == 'df':
-#                 from_parser_to_dict(bp, df_dict)
-#         except Exception as e:
-#             print(e)
-#             pass
-#
-#     print("--- %s seconds ---" % (time.time() - start_time))
-#
-#     try:
-#         if storage_type == 'df':
-#             for one_element in df_dict.items():
-#                 one_element[1].to_csv(os.path.join(settings.output_directory,
-#                                                    '{}.csv'.format(one_element[0])), sep=";", encoding='utf-8-sig')
-#         print("Finished.")
-#     except Exception as e:
-#         raise e
-#     finally:
-#         storage.db_connection.close()
-#         [driver.quit() for driver in drivers]
-#
-
 def parse_sites(parser_name, settings, storage_type: str = 'df'):
     """
     Function takes previously prepared list of urls and parses data from them.
