@@ -14,7 +14,5 @@ def start_with(todo: str, conditions=None):
 
 
 if __name__ == '__main__':
-    #conditions = [{'ktruCodeNameList': ['21.10.60.191-00000054']}]
-    print('start')
     start_with('parse')
-    print('finish')
+  
